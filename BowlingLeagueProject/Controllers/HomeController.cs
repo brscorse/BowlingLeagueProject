@@ -1,5 +1,5 @@
 ﻿using BowlingLeagueProject.Models;
-using BowlingLeagueProject.Models.ViewModels;
+//using BowlingLeagueProject.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -26,10 +26,7 @@ namespace BowlingLeagueProject.Controllers
             //ViewBag.Bowlers = _repo.Teams.ToList();
             //Viewbag.Teams = _repo.Bowlers.ToList();
 
-            var x = new BowlersViewModel
-            {
-                Bowlers = _repo.Bowlers.Include(x => x.Team).Where(x => x.Team.TeamName == team || team == null).OrderBy(x => x.BowlerFirstName)
-            };
+            var x = _repo.Bowlers.Include(x => x.Team).Where(x => x.Team.TeamName == team || team == null).OrderBy(x => x.BowlerFirstName).ToList();
 
             return View(x);
         }
@@ -39,7 +36,7 @@ namespace BowlingLeagueProject.Controllers
         {
             ViewBag.Teams = _repo.Teams.ToList();
             ViewBag.IDs = _repo.Bowlers.Max(x => x.BowlerID) + 1;
-            return View();
+            return View(new Bowler());
         }
 
         [HttpPost]
@@ -49,13 +46,21 @@ namespace BowlingLeagueProject.Controllers
             {
                 _repo.AddBowler(b);
                 //_repo.SaveBowler(b);
-                return View("Index");
+                return RedirectToAction("Index");
             }
             else
             {
                 ViewBag.Teams = _repo.Teams.ToList();
                 return View();
             }
+        }
+
+        public IActionResult Delete(int bowler)
+        {
+            Bowler b = _repo.Bowlers.Single(x => x.BowlerID == bowler);
+            _repo.DeleteBowler(b);
+
+            return RedirectToAction("Index");
         }
 
         //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
