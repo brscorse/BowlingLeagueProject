@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>*@
+
+@model List<Bowler>
+
+<h1>Bowlers</h1>
+@*<NavLink class="btn btn-primary w-100" asp-controller="Home" asp-action="Add" >Add Bowler</NavLink>*@
+<a class="btn btn-primary btn-block" asp-area="" asp-controller="Home" asp-action="Add">Add Bowler</a>
+
+@*@model BowlersViewModel*@
+
+@foreach (Bowler b in Model)
+    {
+        <partial name="LeagueSummary" model="b" />
+    }
+
+
+
+
+
+
+
+
+
+@*<ul>
+    @foreach (var b in Model)
+    {
+        <li>@b.BowlerID - @b.BowlerFirstName</li>
+    }
+</ul>*@
+
+

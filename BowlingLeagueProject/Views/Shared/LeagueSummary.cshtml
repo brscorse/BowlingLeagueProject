@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Bowler
+
+
+<div class="card card-body m-1 p-1">
+    <div class="bg-light p-1">
+        <h4>@Model.BowlerFirstName @Model.BowlerMiddleInit @Model.BowlerLastName</h4>
+        <span class="badge bg-info" style="float:right">
+            Team: @Model.Team.TeamName
+        </span>
+    </div>
+
+
+    <ul>
+        <li>Bowler ID: @Model.BowlerID</li>
+        <li>Bowler Address: @Model.BowlerAddress</li>
+        <li>Bowler City: @Model.BowlerCity</li>
+        <li>Bowler State: @Model.BowlerState</li>
+        <li>Phone Number: @Model.BowlerPhoneNumber</li>
+    </ul>
+
+    <div class="float-right align-content-center">
+        <NavLink class="btn btn-warning w-25">Edit</NavLink>
+        <NavLink class="btn btn-danger w-25">Delete</NavLink>
+    </div>
+</div>
