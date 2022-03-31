@@ -7,9 +7,9 @@
 @model Bowler
 
 <div class="text-center form-group">
-    <h1 class="display-4">Add A Bowler to the league</h1>
+    <h1 class="display-4">Update: @Model.BowlerFirstName</h1>
 
-    <form class="form-group" method="post">
+    <form class="form-group" method="post" asp-action="EditForm">
         <label asp-for="TeamID">Team:</label>
         <select class="form-control" asp-for="TeamID">
             <option value="">Select a Team</option>
@@ -40,9 +40,9 @@
         <label asp-for="BowlerPhoneNumber">Phone Number:</label>
         <input class="form-control" asp-for="BowlerPhoneNumber" /><br />
 
-        <input type="hidden" asp-for="BowlerID" value="@ViewBag.IDs" />
+        <input type="hidden" asp-for="BowlerID" value="@Model.BowlerID" />
 
-        <button type="submit">Add Bowler</button>
+        <button type="submit">Save</button>
 
         <div asp-validation-summary="All"></div>
 

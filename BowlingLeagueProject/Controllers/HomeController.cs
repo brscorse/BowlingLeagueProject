@@ -25,6 +25,7 @@ namespace BowlingLeagueProject.Controllers
         {
             //ViewBag.Bowlers = _repo.Teams.ToList();
             //Viewbag.Teams = _repo.Bowlers.ToList();
+            ViewBag.TeamName = team;
 
             var x = _repo.Bowlers.Include(x => x.Team).Where(x => x.Team.TeamName == team || team == null).OrderBy(x => x.BowlerFirstName).ToList();
 
@@ -64,16 +65,16 @@ namespace BowlingLeagueProject.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int edit)
+        public IActionResult EditForm(int edit)
         {
             ViewBag.Teams = _repo.Teams.ToList();
             var b = _repo.Bowlers.Include(x => x.Team).Single(x => x.BowlerID == edit);
 
-            return View("Edit", b);
+            return View("EditForm", b);
         }
 
         [HttpPost]
-        public IActionResult Edit(Bowler b)
+        public IActionResult EditForm(Bowler b)
         {
             _repo.SaveBowler(b);
 

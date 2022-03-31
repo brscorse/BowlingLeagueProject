@@ -16,8 +16,10 @@ namespace BowlingLeagueProject.Models
         public IQueryable<Bowler> Bowlers => _context.Bowlers;
         public IQueryable<Team> Teams => _context.Teams;
 
+        //Editing
         public void SaveBowler(Bowler b)
         {
+            _context.Update(b);
             _context.SaveChanges();
         }
 

@@ -9,7 +9,17 @@
 
 @model List<Bowler>
 
-<h1>Bowlers</h1>
+
+@if (ViewBag.TeamName != null)
+            {
+                <h1>@ViewBag.TeamName</h1>
+            }
+            else
+            {
+                <h2>All Bowlers</h2>
+            }
+
+
 @*<NavLink class="btn btn-primary w-100" asp-controller="Home" asp-action="Add" >Add Bowler</NavLink>*@
 <a class="btn btn-primary btn-block" asp-area="" asp-controller="Home" asp-action="Add">Add Bowler</a>
 
