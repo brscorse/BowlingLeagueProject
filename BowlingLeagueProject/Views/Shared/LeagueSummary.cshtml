@@ -25,7 +25,8 @@
     </ul>
 
     <div class="float-right align-content-center">
-        <NavLink class="btn btn-warning w-25">Edit</NavLink>
-        <a class="btn btn-danger w-25" asp-route-bowler="@Model.BowlerID" asp-controller="Home" asp-action="Delete" >Delete Bowler</a>
+        
+        <a class="btn btn-warning w-25" asp-route-edit="@Model.BowlerID" asp-controller="Home" asp-action="Edit" >Edit</a>
+        <a class="btn btn-danger w-25" asp-controller="Home" asp-action="Delete">Delete Bowler</a>
     </div>
 </div>

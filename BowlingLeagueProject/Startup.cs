@@ -61,9 +61,9 @@ namespace BowlingLeagueProject
                     "{team}",
                     new { Controller = "Home", action = "Index" });
 
-                //endpoints.MapControllerRoute("bowler",
-                //    "DeleteBowler{bowler}",
-                //    new { Controller = "Home", action = "Delete" });
+                endpoints.MapControllerRoute("bowler",
+                    "EditBowler{edit}",
+                    new { Controller = "Home", action = "Edit" });
 
 
                 endpoints.MapControllerRoute(

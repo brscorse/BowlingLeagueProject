@@ -1,7 +1,8 @@
-﻿@{
-//ViewData["Title"] = "Privacy Policy";
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
 }
-
 
 @model Bowler
 
@@ -19,7 +20,7 @@
         </select><br />
 
         <label asp-for="BowlerFirstName">First Name:</label>
-        <input class="form-control" asp-for="BowlerFirstName" /><br />
+        <input class="form-control" value="@Model.BowlerFirstName" asp-for="BowlerFirstName" /><br />
 
         <label asp-for="BowlerLastName">Last Name:</label>
         <input class="form-control" asp-for="BowlerLastName" /><br />

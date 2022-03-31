@@ -63,6 +63,25 @@ namespace BowlingLeagueProject.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public IActionResult Edit(int edit)
+        {
+            ViewBag.Teams = _repo.Teams.ToList();
+            var b = _repo.Bowlers.Include(x => x.Team).Single(x => x.BowlerID == edit);
+
+            return View("Edit", b);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Bowler b)
+        {
+            _repo.SaveBowler(b);
+
+            return RedirectToAction("Index");
+        }
+
+        
+
         //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         //public IActionResult Error()
         //{
